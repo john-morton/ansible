@@ -1,0 +1,29 @@
+---
+- name: install openssh-server
+  apt: name=openssh-server state=present
+
+- name: install common software
+  apt: name={{ item }} state=present
+  with_items:
+   - vim
+   - software-properties-common
+
+- name: create the kodi user
+  user: name=kodi shell=/bin/bash groups=audio,video append=yes
+
+- name: add kodi repository
+  apt_repository: repo='ppa:team-xbmc/ppa' state=present
+
+#- name: add kodi repository
+#  command: add-apt-repository -y ppa:team-xbmc/ppa
+
+- name: update package lists
+  apt: update_cache=yes # apt-get update
+
+- name: install kodi
+  apt: name=kodi state=present
+
+- name: copy configuration files for sshd
+  template: src=sshdconfig.jinja2 dest=/etc/ssh/sshd_config
+  notify: restart sshd
+

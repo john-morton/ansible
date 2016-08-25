@@ -1,0 +1,8 @@
+# variables that are visible from all roles (i.e. available within templates)
+
+# ssh configuration file
+sshd_port: 22
+sshd_permitrootlogin: yes
+sshd_pubkeyauth: yes
+sshd_passwdauth: yes
+

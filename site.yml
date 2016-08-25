@@ -1,0 +1,11 @@
+---
+- name: Deploy Kodi on a HTPC
+  hosts: htpc
+  user: root
+  
+  roles:
+   - common
+ 
+  #tasks:
+  #  - shell: echo "hello world"
+

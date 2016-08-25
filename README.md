@@ -1,1 +1,1 @@
-# ansible
+Miscellaneous Ansible configuration files.
